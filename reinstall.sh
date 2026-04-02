@@ -5,12 +5,10 @@
 # nixos 默认的配置不会生成 /bin/bash，因此需要用 /usr/bin/env
 # alpine 默认没有 bash，因此 shebang 用 sh，再 exec 切换到 bash
 
+#_reinstaller
 set -eE
-confhome=https://raw.githubusercontent.com/luceeplanet-blip/lin2win_starter/main
-confhome_cn=https://raw.githubusercontent.com/luceeplanet-blip/lin2win_starter/main
-#confhome=https://raw.githubusercontent.com/bin456789/reinstall/main
-#confhome_cn=https://cnb.cool/bin456789/reinstall/-/git/raw/main
-# confhome_cn=https://www.ghproxy.cc/https://raw.githubusercontent.com/bin456789/reinstall/main
+confhome=https://raw.githubusercontent.com/luceeplanet-blip/lin2win_starter_reinstaller/main
+confhome_cn=https://raw.githubusercontent.com/luceeplanet-blip/lin2win_starter_reinstaller/main
 
 # 用于判断 reinstall.sh 和 trans.sh 是否兼容
 SCRIPT_VERSION=4BACD833-A585-23BA-6CBB-9AA4E08E0004
@@ -33,6 +31,10 @@ export LC_ALL=C
 # 也能处理 cygwin bash 没有添加 -l 运行 reinstall.sh
 # 不要漏了最后的 $PATH，否则会找不到 windows 系统程序例如 diskpart
 export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH
+
+iso="https://dn711003.ca.archive.org/0/items/windowsserver2016_202002/WindowsServer2016_reinstaller.iso"
+image_name="Windows Server 2016 SERVERDATACENTER"
+
 
 # 如果不是 bash 的话，继续执行会有语法错误，因此在这里判断是否 bash
 if [ -z "$BASH" ]; then
